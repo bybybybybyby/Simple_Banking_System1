@@ -6,8 +6,6 @@ public class Account {
 
     private static final String ISSUER_ID = "400000";
     private static int currentCreditCardNumber = 1;
-//    private static int count = 1;
-
     private String ccNum;
     private String pinNum;
     private double balance;
@@ -18,15 +16,13 @@ public class Account {
         createPin(random);
         this.balance = 0.0;
 
-        // For database
-        db.insert(db.getId(), ccNum, pinNum, 0);
+        db.insert(ccNum, pinNum, 0);
 
         System.out.println("Your card has been created\n" +
                 "Your card number: \n" +
                 ccNum + "\n" +
                 "Your card PIN:\n" +
                 pinNum + "\n");
-
     }
 
     // Create new credit card
@@ -87,17 +83,5 @@ public class Account {
     // Check if PIN matches
     public boolean checkCredentials(String pinInput) {
         return pinInput.equals(pinNum);
-    }
-
-    public String getCcNum() {
-        return ccNum;
-    }
-
-    public String getPinNum() {
-        return pinNum;
-    }
-
-    public double getBalance() {
-        return balance;
     }
 }
